@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title></title>
+</head>
+<body bgcolor="pink">
+<!--页面写table -->
+	<style type="text/css">
+		table{
+			text-align: center;
+			border-collapse:collapse;
+			width:530px;
+			height:250px;
+			margin-top:50px;  
+		}
+	</style>
+<table border="1" align="center">
+<tr>
+ <th>编号</th>	
+ <th>姓名</th>
+ <th>技术方向</th>
+ <th>编辑</th>
+</tr>
+{foreach from=$Res item=row}
+  <tr>
+  <td>{$row['userid']}</td>
+  <td>
+ <input type="text" name="txtname{$row['userid']}" value="{$row['username']}" readonly="readonly">
+  </td>
+<td>
+ <input type="text" name="txtdirect{$row['userid']}" value="{$row['directname']}" readonly="readonly">	
+</td>
+<td>
+<a id="update_a" class="update">
+<font color="purple">修改</font>	
+</a>	
+</td>
+ </tr>
+{/foreach}
+
+</table>
+
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	//写jquery文本
+$(function(){
+  //获取修改的字
+
+
+})
+</script>
+</html>

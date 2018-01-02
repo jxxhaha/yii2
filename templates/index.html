@@ -1,0 +1,65 @@
+<!-- foreach循环一维关联数组 -->
+{foreach $arr as $k=>$v}
+{$k}--{$v}
+{/foreach}
+<br/>
+<!-- 其中还包括一个foreachelse语句,他是没进来foreach才会进来这个 -->
+{foreach $arr1 as $k=>$v}
+{$k}--{$v}
+{foreachelse}
+<!-- <script type="text/javascript">
+	alert("数组是空的,或者你忘了分配")
+</script> -->
+{/foreach}
+<br/>
+<!-- foreach循环遍历索引数组另一种写法(里面有参数from[指的是从那个数组来的，貌似于长度] item指的是索引) key指的是值-->
+{foreach from=$arr2 item=v key=k}
+{$k}=>{$v}
+{/foreach}
+<br/>
+<!-- foreach循环遍历关联数组另一种写法,和素引数组写法一样 -->
+{foreach from=$arr3 item=v key=k}
+{$k}=>{$v}
+{/foreach}
+<hr/>
+<!-- section块函数便利索引数组 参数loop从哪来的数组 name指的是循环的数组 start从第几个索引数组开始。可选,偏向于索引数组，不偏向于关联数组
+下面是索引数组，name必须有，因为x就像是0 1 2关联数组有自己的名字-->
+{section loop=$arr2 name=x}
+{$arr2[x]}
+{/section}
+<br/>
+<!-- section块函数便利关联数组(不用name属性)只需要数组点属性
+ 但是name属性必须有-->
+{section loop=$arr3 name=f}
+{$arr3.name}--{$arr3.age}
+{/section}
+<hr/>
+<!-- foreach二维数组的遍历 两种方法-->
+{*方法一 foreach循环嵌套(如果只有item就只有键值,$k就有键名)*}
+{foreach from=$arr4 item=row}
+{foreach from=$row item=v key=k}
+{$k}--{$v}
+{/foreach}
+<br/>
+{/foreach}
+<br/>
+{*方法二 只有一次foreach循环*}
+{foreach from=$car item=row key=k}
+<!-- 此时第一次循环已经到二维数组(关联数组)的一维数组下,也就是一维数组的方法 可以点或者方括号-->
+姓名是:{$row['name']}
+&nbsp;&nbsp;&nbsp;
+类型是:{$row['type']}
+&nbsp;&nbsp;&nbsp;
+价格是:{$row['price']}
+<br/>
+{/foreach}
+<hr/>
+{*块函数section循环二维数组(关联数组),方括号或者点关联索引 与name没关系,但是索引数组与name有关系 而且关联数组不能section循环嵌套*}
+{section loop=$person name=row}
+<!-- 这里是二维数组中的一维数组 根据索引找的也就是name 第二个点或者方括号一维数组的关联索引-->
+{$person[row].name}
+{$person[row].sex}
+{$person[row].age}
+<br/>
+{/section}
+

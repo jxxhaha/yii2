@@ -1,0 +1,48 @@
+<meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		button{
+			margin-top:5px;
+			margin-left:20px;
+			border-radius:20%;   
+		}
+	</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	//获取登录按钮
+$("#loginBtn").click(function(){
+var uname=$("#txtName").val();
+var upwd=$("#txtPwd").val();
+$.ajax({
+ url:"loginPProcess.php",
+ // 数据传的多了 就好像jsom传值
+ data:{
+    useName:uname,
+    usePwd:upwd},
+   dataType:'text',
+   type:'post',
+ success:function(data){
+  alert(data);
+}
+})
+
+
+
+
+})
+})	
+
+</script>
+</head>
+<body bgcolor="skyblue">
+<form align="center" style="margin-top:200px;">
+用户名:<input type="text" id="txtName" placeholder="请输入用户名"><br>
+密&nbsp;&nbsp;&nbsp;码:<input type="text" id="txtPwd" placeholder="请输入密码"><br>
+<button id="loginBtn">点我登录</button>	
+</form>
+</body>
+</html>
